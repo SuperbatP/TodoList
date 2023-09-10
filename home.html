@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./resources/css/style.css" />
+    <title>ToDoList</title>
+  </head>
+  <body>
+    <!-- container -->
+    <div class="container">
+      <!-- calendar -->
+      <div class="memoBox">
+        <div class="calendar">
+          <ul class="week">
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+            <li>Sun</li>
+          </ul>
+        </div>
+        <!-- d-day -->
+        <div class="d-day">
+          <div class="timeInput">
+            <input type="date" id="setDate" />
+            <button onclick="addTime(); addDay();">Add</button>
+          </div>
+
+          <div class="timer">
+          </div>
+        </div>
+      </div>
+      <!-- todo -->
+      <div class="todo-app">
+        <h2>To-Do List <img src="./resources/images/icon.png" /></h2>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="메모를 작성하세요." />
+          <button onclick="f_addTask()">Add</button>
+        </div>
+        <ul class="list-container"></ul>
+      </div>
+    </div>
+    <div id="toastBox"></div>
+    <script src="./resources/js/script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/481a1ded79.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

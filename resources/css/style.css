@@ -1,0 +1,329 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+/* todo */
+.todo-app{
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+
+.todo-app h2{
+    color: #002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.row input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+}
+
+button{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+/*  user-select: none; 복사 금지 */
+.list-container ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.list-container ul li::before{
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(/resources/images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+
+.list-container ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}
+
+.list-container ul li.checked::before{
+    background-image: url(/resources/images/checked.png);
+}
+
+.list-container ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.list-container ul li span:hover{
+    background: #edeef0;
+}
+
+/* toast alter */
+#toastBox{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.toast{
+    width: 260px;
+    height: 80px;
+    background: #fff;
+    font-weight: 500;
+    margin: 15px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transform: translateX(100%);
+    animation: moveleft 0.5s linear forwards;
+}
+
+@keyframes moveleft{
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.toast i {
+    margin: 0 20px;
+    font-size: 35px;
+    color: salmon;
+}
+
+.toast::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: salmon;
+    animation: anim 2s linear forwards;
+}
+
+@keyframes anim{
+    100%{
+        width: 0;
+    }
+}
+
+.memoBox{
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* calendar */
+.calendar{
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+}
+
+.week{
+    display: flex;
+    gap: 5px;
+    height: 120px;
+    width: 100%;
+    max-width: 540px;
+    padding: 20px 40px;
+    background: #fff;
+    border-radius: 10px;
+    border-top: 6px solid #222327;
+}
+
+.week li{
+    list-style: none;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    border-radius: 20px;
+    font-size: 1.25em;
+}
+
+.week li.current {
+    position: relative;
+    background: #29fd53;
+    height: 100px;
+    width: 100px;
+    font-size: 1.65em;
+    color: #222327;
+    border: 6px solid #222327;
+    transform: translateY(-70px);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.week li.current::before {
+    content: "";
+    position: absolute;
+    top: 44px;
+    left: -36px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-top-right-radius: 10px;
+    box-shadow: 6px -6px #222327;
+}
+
+.week li.current::after {
+    content: "";
+    position: absolute;
+    top: 44px;
+    right: -36px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    box-shadow: -6px -6px #222327;
+}
+
+.week li.current h1{
+    position: absolute;
+    transform: translateY(76px);
+    font-size: 1.6em;
+    color: #222327;
+}
+
+.week li.current h5{
+    position: absolute;
+    transform: translateY(102px);
+    font-size: 0.55em;
+    color: #222327;
+    font-weight: bold;
+}
+
+.week li.current h3{
+    position: absolute;
+    transform: translateY(-62px);
+    font-size: 0.7em;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* d-day */
+
+.d-day{
+    width: 100%;
+    max-width: 540px;
+    min-height: 400px;
+    margin: 50px auto 20px;
+    border: 2px dashed #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userDday{
+    display: flex;
+    justify-content: center;
+}
+
+.userDday div{
+    flex-basis: 100px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.userDday div p{
+    font-size: 60px;
+    margin-bottom: -14px;
+    color: #fff;
+}
+
+.timer div span{
+    color: #fff;
+}
+
+.timeInput{
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+}
+
+.timeInput input{
+    flex: 1;
+    margin-right: 20px;
+    padding: 14px 20px;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    border-radius: 5px;
+    position: relative;
+}
+
+
